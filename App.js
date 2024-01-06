@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet,View} from "react-native";
+import { StyleSheet,View, SafeAreaView} from "react-native";
 import StartGameScreen from "./Screens/StartGameScreen";
 import GameScreen from './Screens/GameScreen';
 
@@ -13,11 +13,13 @@ export default function App(){
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler}/>;
 
   if(userNumber){
-    screen = <GameScreen/>
+    screen = <GameScreen userNumber={userNumber}/>;
   }
   return(
     <View style={styles.rootscreen}>
-        {screen}
+    <SafeAreaView style={styles.rootscreen}>
+    {screen}
+    </SafeAreaView>          
     </View>
   );
 }
